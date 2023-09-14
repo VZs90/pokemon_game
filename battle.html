@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="battle_styles.css" />
+    <title>Pokémon Battle</title>
+  </head>
+  <body>
+    <header>
+      <nav id="menu_nav">
+        <ul id="menu_ul">
+          <li class="menu_li">
+            <a href="index.html">Pokédex</a>
+          </li>
+          <li class="menu_li">
+            <a href="#">Battle</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        
+        <!-- <div class="pokedex">
+          <img src="images/pokedex3.png" alt="pokedex" id="pokedex_img">
+          <div class="pokemonBox"></div>
+        </div>
+        <div class="searchBox">
+          <input
+            id="pokemonName"
+            type="Pokemon name"
+            placeholder="Pokemon name"
+          />
+          <button id="search">🔎</button>
+        </div> -->
+        
+      </div>
+      <!-- <div id="history">
+        <h2>History : </h2><br>
+      </div> -->
+
+      <div id="pokemon_vs_div">
+        <div id="battle_div">
+          <img src="images/battle.png" alt="pokémon battle" id="battle_img">
+        </div>
+        <input type="text" name="pokemon1" id="pokemon1" placeholder="First pokémon">
+        <div id="vs_div">
+          <img src="images/vs.png" alt="versus" id="vs_img">
+        </div>
+        <input type="text" name="pokemon2" id="pokemon2" placeholder="Second pokémon">
+        <label for="select_stat">Choose a stat for the battle</label>
+        <select id="select_stat" name="select_stat">
+          <option value="hp">HP</option>
+          <option value="attack">Attack</option>
+          <option value="defense">Defense</option>
+          <option value="speed">Speed</option>
+        </select>
+        <button id="battle_btn">Battle</button>
+      </div>
+
+      <div id="pokemon1_div">
+        <!-- <img src="" alt="first pokémon" id="pok1"> -->
+      </div>
+
+      <div id="pokemon2_div">
+        <!-- <img src="" alt="second pokémon" id="pok2"> -->
+      </div>
+
+      <!-- <div id="mozgokep"></div> -->
+      <!-- <button id="gobattle_btn"></button> -->
+    </main>
+
+    <script src="animation_stopper.js"></script>
+    <script src="script.js"></script>
+    <script src="scroll_control.js"></script>
+    <script src="browserBlockingLog.js"></script>
+  </body>
+</html>
