@@ -10,6 +10,10 @@
     />
     <link rel="stylesheet" href="battle_styles.css" />
     <title>Pokémon Battle</title>
+    <audio id="battle_music" controls autoplay>
+      <source src="audio/battle_music.mp3" type="audio/mpeg">
+      A böngésződ nem támogatja a hanglejátszást.
+    </audio>
   </head>
   <body>
     <header>
@@ -65,11 +69,11 @@
       </div>
 
       <div id="pokemon1_div">
-        <!-- <img src="" alt="first pokémon" id="pok1"> -->
+        <h1 class="pokemonbattle_h2">Pokémon 1</h1>
       </div>
 
       <div id="pokemon2_div">
-        <!-- <img src="" alt="second pokémon" id="pok2"> -->
+        <h1 class="pokemonbattle_h2">Pokémon 2</h1>
       </div>
 
       <!-- <div id="mozgokep"></div> -->
@@ -80,5 +84,6 @@
     <script src="script.js"></script>
     <script src="scroll_control.js"></script>
     <script src="browserBlockingLog.js"></script>
+    <script src="battle.js"></script>
   </body>
 </html>

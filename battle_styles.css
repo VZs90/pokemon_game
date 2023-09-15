@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box !important;
     list-style: none;
+    font: 400 1rem "Roboto", sans-serif;
   }
 
   :root{
@@ -10,13 +11,8 @@
     --green2:#47be29;
   }
   
-  body,
-  input,
-  textarea,
-  select,
-  button {
-    color: white;
-    font: 400 1rem "Roboto", sans-serif;
+  input:hover{
+    cursor: pointer;
   }
 
   body{
@@ -24,6 +20,29 @@
     background-image: url('images/pokemon_background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  #battle_music {
+    width: 20%;
+    position: absolute;
+    display: flex;
+    bottom:2%;
+    right:3%;
+    border-radius: 25px;
+    background-color: aqua;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    animation: audio_player 1s ease-in-out 1;
+  }
+
+  @keyframes audio_player{
+    0%{
+      bottom:0%;
+      right:3%;
+    }
+    100%{
+      bottom:2%;
+      right:3%;
+    }
   }
 
   #battle_div{
@@ -180,6 +199,7 @@
     align-items: center;
     text-align: center;
     border-radius:10px;
+    color:white;
   }
   
   .menu_li a:hover{
@@ -201,4 +221,64 @@
   
   #img_sound:hover{
     background-color: #98FF98;
+  }
+
+  #pokemon1_div{
+    position: absolute;
+    left:10%;
+    top:10%;
+    width:20%;
+    height:auto;
+    background: linear-gradient(0.100turn,transparent,#ebf8e1,transparent);
+    color:black;
+    border-radius: 25px;
+  }
+
+  #pokemon1_div img{
+    width: 100%;
+  }
+
+  #pokemon2_div{
+    position: absolute;
+    right:10%;
+    top:10%;
+    width:20%;
+    height:auto;
+    background: linear-gradient(-0.100turn,transparent,#ebf8e1,transparent);
+    color:black;
+    border-radius: 25px;
+  }
+
+  #pokemon2_div img{
+    width: 100%;
+  }
+
+  .pokemonbattle_h2{
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin:2%;
+  }
+
+  .pokemon1_h1{
+    font-size: 1.5rem;
+    width:50%;
+    background-color: white;
+    color:black;
+    padding:10%;
+  }
+
+  .pokemon2_h1{
+    font-size: 1.5rem;
+    width:50%;
+    background-color: white;
+    color:black;
+    padding:10%;
+    
+  }
+
+  .pokebattle{
+    display: flex;
+    background-color: white;
+    border-radius:0 0 25px 25px;
+    overflow: hidden;
   }

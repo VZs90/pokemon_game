@@ -55,8 +55,8 @@ function stopTextAnimation(){
 }
 
 function themesongAutoplay(){
+  const themesong_mp3=document.getElementById("theme_song");
   if (themesong_mp3) {
-    const themesong_mp3=document.getElementById("theme_song");
     themesong_mp3.src = "audio/pokémon_theme_song.mp3";
     themesong_mp3.volume=0.5;
     themesong_mp3.autoplay = true; // Automatikus lejátszás beállítása
@@ -222,9 +222,6 @@ function history_p_click(e){
 }
 
 function cacheImage(imageUrl){
-  
-
-
   // Ellenőrizzük, hogy a kép már van-e a böngésző cache-ében
   if (localStorage.getItem("cachedImageURL") === imageUrl) {
       // Ha megtaláltuk a képet a cache-ben, használjuk azt
