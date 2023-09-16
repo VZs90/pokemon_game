@@ -3,6 +3,9 @@ let selectedValue = selectElement.value;
 const firstpokemon=document.getElementById("pokemon1");
 const secondpokemon=document.getElementById("pokemon2");
 const battle_btn=document.getElementById("battle_btn");
+const win1=document.getElementById("win1");
+const win2=document.getElementById("win2");
+
 let pokemonName1 = firstpokemon.value;
 let pokemonName2 = secondpokemon.value;
 
@@ -12,7 +15,12 @@ let pokemonName2 = secondpokemon.value;
 }); */
 
 document.addEventListener("DOMContentLoaded", function() {
-  
+  if(win1){
+    win1.style.display="none";
+  }
+  if(win2){
+    win2.style.display="none";
+  }
   if (firstpokemon) {
     firstpokemon.value="Pikachu";
   }
@@ -62,45 +70,51 @@ function getPokemon(e) {
       .then((response) => response.json())
       .then((data) => {
         const stats_length=data.stats.length;
-        let image_url=data.sprites.other["official-artwork"].front_default;
+        let image_url1=data.sprites.other["official-artwork"].front_default;
         
-        for (let i = 0; i < stats_length; i++) {
-          if (chosen_stat===data.stats[i].stat.name) {
-            stat1_name=data.stats[i].stat.name;
-            stat1_value=data.stats[i].base_stat;
+        if (image_url1) {
+          for (let i = 0; i < stats_length; i++) {
+            if (chosen_stat===data.stats[i].stat.name) {
+              stat1_name=data.stats[i].stat.name;
+              stat1_value=data.stats[i].base_stat;
+            }
+            /* const statElement = document.createElement("p");
+            statElement.textContent = `${statName} : ${baseStat}`;
+            statsContainer.appendChild(statElement); */
           }
-          /* const statElement = document.createElement("p");
-          statElement.textContent = `${statName} : ${baseStat}`;
-          statsContainer.appendChild(statElement); */
+          document.getElementById("pokemon1_div").innerHTML = `
+          <div>
+            <img
+              src=""
+              alt="First pokémon"
+              id="pok1"
+            />
+          </div>
+          <br>
+          <div class="pokebattle">
+            <h1 class="pokemon1_h1">${capitalizeFirstLetter(data.name)}</h1>
+            <h1 class="pokemon1_h1">${stat1_name.toUpperCase()} ${stat1_value}</h1>
+          </div>`;
+          /* const history_p=document.createElement("p");
+          history_p.classList.add("history_p");
+          history_p.textContent=capitalizeFirstLetter(data.name);
+          historyEl.appendChild(history_p);
+          const history_p_elements = document.getElementsByClassName("history_p");
+          if (history_p_elements.length > 0) {
+            const history_p = history_p_elements[0];
+            history_p.addEventListener("click", history_p_click);
+          }  */
+          cacheImage(image_url1,"pok1");
+        } else {
+          document.getElementById("pokemon1_div").innerHTML = `
+          <h1>Pokemon not found 😞</h1>
+          `;
         }
-        document.getElementById("pokemon1_div").innerHTML = `
-        <div>
-          <img
-            src=""
-            alt="First pokémon"
-            id="pok1"
-          />
-        </div>
-        <br>
-        <div class="pokebattle">
-          <h1 class="pokemon1_h1">${capitalizeFirstLetter(data.name)}</h1>
-          <h1 class="pokemon1_h1">${stat1_name.toUpperCase()} ${stat1_value}</h1>
-        </div>`;
-        /* const history_p=document.createElement("p");
-        history_p.classList.add("history_p");
-        history_p.textContent=capitalizeFirstLetter(data.name);
-        historyEl.appendChild(history_p);
-        const history_p_elements = document.getElementsByClassName("history_p");
-        if (history_p_elements.length > 0) {
-          const history_p = history_p_elements[0];
-          history_p.addEventListener("click", history_p_click);
-        }  */
-        cacheImage(image_url,"pok1");
       })
       .catch((err) => {
-        /* document.querySelector(".pokemonBox").innerHTML = `
-        <h4>Pokemon not found 😞</h4>
-        `; */
+        document.getElementById("pokemon1_div").innerHTML = `
+        <h1>Pokemon not found 😞</h1>
+        `;
         console.log("Pokemon not found", err);
       });
 
@@ -108,45 +122,49 @@ function getPokemon(e) {
       .then((response) => response.json())
       .then((data) => {
         const stats_length=data.stats.length;
-        image_url=data.sprites.other["official-artwork"].front_default;
+        let image_url2=data.sprites.other["official-artwork"].front_default;
         
-        
-        
-        
-        for (let i = 0; i < stats_length; i++) {
-          if (chosen_stat===data.stats[i].stat.name) {
-            stat2_name=data.stats[i].stat.name;
-            stat2_value=data.stats[i].base_stat;
+        if (image_url2) {
+          for (let i = 0; i < stats_length; i++) {
+            if (chosen_stat===data.stats[i].stat.name) {
+              stat2_name=data.stats[i].stat.name;
+              stat2_value=data.stats[i].base_stat;
+            }
+            /* const statElement = document.createElement("p");
+            statElement.textContent = `${statName} : ${baseStat}`;
+            statsContainer.appendChild(statElement); */
           }
-          /* const statElement = document.createElement("p");
-          statElement.textContent = `${statName} : ${baseStat}`;
-          statsContainer.appendChild(statElement); */
+  
+          document.getElementById("pokemon2_div").innerHTML = `
+          <div>
+            <img
+              src=""
+              alt="Second pokémon"
+              id="pok2"
+            />
+          </div>
+          <br>
+          <div class="pokebattle">
+            <h1 class="pokemon2_h1">${capitalizeFirstLetter(data.name)}</h1>
+            <h1 class="pokemon2_h1">${stat2_name.toUpperCase()} ${stat2_value}</h1>
+          </div>`;
+          /* 
+          const history_p=document.createElement("p");
+          history_p.classList.add("history_p");
+          history_p.textContent=capitalizeFirstLetter(data.name);
+          historyEl.appendChild(history_p);
+          const history_p_elements = document.getElementsByClassName("history_p");
+          if (history_p_elements.length > 0) {
+            const history_p = history_p_elements[0];
+            history_p.addEventListener("click", history_p_click);
+          } */
+          cacheImage(image_url2,"pok2");
+        } else {
+          document.getElementById("pokemon2_div").innerHTML = `
+          <h1>Pokemon not found 😞</h1>
+          `;
         }
-
-        document.getElementById("pokemon2_div").innerHTML = `
-        <div>
-          <img
-            src=""
-            alt="Second pokémon"
-            id="pok2"
-          />
-        </div>
-        <br>
-        <div class="pokebattle">
-          <h1 class="pokemon2_h1">${capitalizeFirstLetter(data.name)}</h1>
-          <h1 class="pokemon2_h1">${stat2_name.toUpperCase()} ${stat2_value}</h1>
-        </div>`;
-        /* 
-        const history_p=document.createElement("p");
-        history_p.classList.add("history_p");
-        history_p.textContent=capitalizeFirstLetter(data.name);
-        historyEl.appendChild(history_p);
-        const history_p_elements = document.getElementsByClassName("history_p");
-        if (history_p_elements.length > 0) {
-          const history_p = history_p_elements[0];
-          history_p.addEventListener("click", history_p_click);
-        } */
-        cacheImage(image_url,"pok2");
+        
         let pok1_h1_elems = document.getElementsByClassName("pokemon1_h1");
         let pok2_h1_elems = document.getElementsByClassName("pokemon2_h1");
         if (parseFloat(stat1_value)>parseFloat(stat2_value)) {
@@ -158,21 +176,31 @@ function getPokemon(e) {
             pok2_h1_elems[i].style.backgroundColor = "red";
             pok2_h1_elems[i].style.color="white";
           }
+          document.getElementById("pokemon1_div").innerHTML += `<img src="images/winner.png" alt="First pokémon is the winner" id="win1">`;
+          win1.style.display="block";
+          win1.style.src="images/winner.png";
+          
+          // pokemon2_div.style.opacity="0.5";
+          // pok2_h1_elems[i].style.textDecoration = 'line-through';
         } else if(parseFloat(stat1_value)<parseFloat(stat2_value)){
           for (var i = 0; i < pok1_h1_elems.length; i++) {
             pok1_h1_elems[i].style.backgroundColor = "red";
             pok1_h1_elems[i].style.color="white";
+            // pok1_h1_elems[i].style.textDecoration = 'line-through';
           }
           for (var i = 0; i < pok2_h1_elems.length; i++) {
             pok2_h1_elems[i].style.backgroundColor = "green";
             pok2_h1_elems[i].style.color="white";
           }
+          document.getElementById("pokemon2_div").innerHTML += `<img src="images/winner.png" alt="Second pokémon is the winner" id="win2">`;
+          win2.style.display="block";
+          win2.style.src="images/winner.png";
         }
       })
       .catch((err) => {
-        /* document.querySelector(".pokemonBox").innerHTML = `
-        <h4>Pokemon not found 😞</h4>
-        `; */
+        document.getElementById("pokemon2_div").innerHTML = `
+          <h1>Pokemon not found 😞</h1>
+          `;
         console.log("Pokemon not found", err);
       });
       
