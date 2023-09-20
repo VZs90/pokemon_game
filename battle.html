@@ -67,6 +67,12 @@
         </select>
         <button id="battle_btn">Battle</button>
       </div>
+      <div id="left_arrow_div">
+        <img src="images/left_arrow.png" alt="left arrow" id="left_arrow_img">
+      </div>
+      <div id="right_arrow_div">
+        <img src="images/right_arrow.png" alt="right arrow" id="right_arrow_img">
+      </div>
 
       <div id="pokemon1_div">
         <h1 class="pokemonbattle_h2">Pokémon 1</h1>
@@ -77,15 +83,30 @@
         <h1 class="pokemonbattle_h2">Pokémon 2</h1>
         <img src="images/winner.png" alt="Second pokémon is the winner" id="win2">
       </div>
+      <div id="svg_div">
+        
+        <!-- <svg height="110" width="110">
+          <defs>
+            <filter id="f1" x="0" y="0">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+            </filter>
+          </defs>
+          <rect width="90" height="90" stroke="green" stroke-width="3" fill="red" filter="url(#f1)" />
+          Sorry, your browser does not support inline SVG.  
+        </svg> -->
+
+      </div>
+      
 
       <!-- <div id="mozgokep"></div> -->
       <!-- <button id="gobattle_btn"></button> -->
     </main>
-
-    <script src="animation_stopper.js"></script>
+    
     <script src="script.js"></script>
+    <script src="battle.js"></script>
+    <script src="animation_stopper.js"></script>
     <script src="scroll_control.js"></script>
     <script src="browserBlockingLog.js"></script>
-    <script src="battle.js"></script>
+    
   </body>
 </html>
