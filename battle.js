@@ -5,6 +5,8 @@ const secondpokemon=document.getElementById("pokemon2");
 const battle_btn=document.getElementById("battle_btn");
 const win1=document.getElementById("win1");
 const win2=document.getElementById("win2");
+const left_arrow=document.getElementById("left_arrow_div");
+const right_arrow=document.getElementById("right_arrow_div");
 
 let pokemonName1 = firstpokemon.value;
 let pokemonName2 = secondpokemon.value;
@@ -27,6 +29,12 @@ document.addEventListener("DOMContentLoaded", function() {
   if (secondpokemon) {
     secondpokemon.value="Bulbasaur";
   }
+  if (left_arrow) {
+    left_arrow.style.display="none";
+  }
+  if (right_arrow) {
+    right_arrow.style.display="none";
+  }
   /* if (menuElements.length > 0) {
     for (let i = 0; i < menuElements.length; i++) {
       menuElements[i].addEventListener("click", stopAllAnimations);
@@ -43,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log(selectedValue); // Opcionális: kiírhatod az új értéket a konzolra
     });
   }
-  
+  themesongAutoplay();
 });
 
 function themesongAutoplay(){
@@ -167,10 +175,14 @@ function getPokemon(e) {
         
         let pok1_h1_elems = document.getElementsByClassName("pokemon1_h1");
         let pok2_h1_elems = document.getElementsByClassName("pokemon2_h1");
+        left_arrow.style.display="none";
+        right_arrow.style.display="none";
+        
         if (parseFloat(stat1_value)>parseFloat(stat2_value)) {
           for (var i = 0; i < pok1_h1_elems.length; i++) {
             pok1_h1_elems[i].style.backgroundColor = "green";
             pok1_h1_elems[i].style.color="white";
+            left_arrow.style.display="block";
           }
           for (var i = 0; i < pok2_h1_elems.length; i++) {
             pok2_h1_elems[i].style.backgroundColor = "red";
@@ -191,6 +203,7 @@ function getPokemon(e) {
           for (var i = 0; i < pok2_h1_elems.length; i++) {
             pok2_h1_elems[i].style.backgroundColor = "green";
             pok2_h1_elems[i].style.color="white";
+            right_arrow.style.display="block";
           }
           document.getElementById("pokemon2_div").innerHTML += `<img src="images/winner.png" alt="Second pokémon is the winner" id="win2">`;
           win2.style.display="block";

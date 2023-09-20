@@ -6,7 +6,6 @@ const historyEl=document.getElementById("history");
 const pokedex_img=document.getElementById("pokedex_img");
 const menuElements=document.getElementsByClassName("menu_li");
 const animatedTextEl=document.getElementById("mozgokep");
-
 const sound_img=document.getElementById("img_sound");
 
 let sound_on_off=true;
@@ -27,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
   } */
   themesongAutoplay();
   webW();
+  
 });
 
 function webW(){
@@ -39,6 +39,13 @@ function webW(){
 
   // Üzenet küldése a Web Workernek
   worker.postMessage(5); // Példa: küldjük el az 5-öt a Web Workernek
+}
+
+function pictureW(){
+  
+
+  // Üzenet küldése a Web Workernek
+   // Példa: küldjük el az 5-öt a Web Workernek
 }
 
 function stopTextAnimation(){
@@ -79,7 +86,7 @@ function playThemeSong(){
   if(themesong_mp3.paused){
     themesong_mp3.paused=false;
   }
-} */
+} 
 
 if(sound_img){
   sound_img.addEventListener("click",function(){
@@ -93,7 +100,7 @@ if(sound_img){
       sound_img.src="images/sound_on.png";
     }
 });
-}
+} */
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -104,10 +111,12 @@ function lowerCaseName(string) {
 }
 
 function showBoxShadow() {
-  pokedex_img.style.boxShadow = '0 0 10px 5px yellow';
-  setTimeout(() => {
+  if(pokedex_img){
+    pokedex_img.style.boxShadow = '0 0 10px 5px yellow';
+    setTimeout(() => {
     pokedex_img.style.boxShadow = '0 0 0 0 yellow';
-}, 200); // 2000 ms = 2 másodperc
+    }, 200);
+  }
 }
 
 function getPokemon(e) {
@@ -228,7 +237,7 @@ function cacheImage(imageUrl){
       var cachedImage = document.getElementById("cachedImage");
       cachedImage.src = localStorage.getItem("cachedImage");
   } else {
-      // Ha a kép nincs a cache-ben, töltsük le és mentsük el
+      // Ha a kép nincs a cache-ben, letöltjük és elmentjük
       var xhr = new XMLHttpRequest();
       xhr.open("GET", imageUrl, true);
       xhr.responseType = "blob";
